@@ -1,0 +1,1 @@
+{"n": 2, "lambda": "1", "witness": [{"ranking": [0, 1], "weight": 1}, {"ranking": [1, 0], "weight": 1}], "certificates": [{"rho": [0, 1], "mu": ["0"]}, {"rho": [1, 0], "mu": ["1"]}]}
