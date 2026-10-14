@@ -1,4 +1,4 @@
-/* Exhaustive check of Conjecture 5.5 for all rankings sigma of n candidates:
+/* Exhaustive check of Conjecture 8.2 for all rankings sigma of n candidates:
    (t-1)|E_t| <= F(sigma) for every real t >= 1, where E_t is the set of pairs a < b with
    sigma(a) - sigma(b) >= t(b - a) and F is the footrule distance to the identity.
    |E_t| is a step function of t and (t-1)|E_t| increases between its steps, so it suffices to test

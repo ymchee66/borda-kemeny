@@ -1,6 +1,6 @@
 """Generate exact certificates for the approximation ratio of Borda's rule on n candidates.
 
-For every ranking rho of {0,...,n-1} the linear program of Theorem 6.3 is solved numerically
+For every ranking rho of {0,...,n-1} the linear program of Theorem 6.2 is solved numerically
 with the HiGHS solver in SciPy. From the numerical solutions we build
   * a rational number lam (the largest optimum),
   * for every ranking rho, rational multipliers mu_0,...,mu_{n-2} >= 0 satisfying the

@@ -10,13 +10,13 @@ Theorem and section numbers below refer to that paper.
 
 | File | Purpose |
 |---|---|
-| `generate_certificates.py` | Solves the linear programs of Theorem 6.3 for Borda's rule with the HiGHS solver in SciPy and writes rational certificates and integer extremal profiles to `certificates/`. |
+| `generate_certificates.py` | Solves the linear programs of Theorem 6.2 for Borda's rule with the HiGHS solver in SciPy and writes rational certificates and integer extremal profiles to `certificates/`. |
 | `verify.py` | Exact verifier for Theorem 7.1. Uses only the Python standard library. |
 | `certificates/borda_n<n>.json` | Certificates and extremal profile for `n` = 2, ..., 7 candidates. |
 | `checks/check_three_candidates.py` | Symbolic check of the multipliers in the proof of Theorem 4.2 (needs SymPy). |
 | `checks/check_lemma_average.py` | Exact randomised check of Lemma 3.1 in rational arithmetic. |
 | `checks/check_gap_lower.py` | Exact check of the construction in the proof of Theorem 3.4. |
-| `checks/conjecture.c` | Exhaustive check of Conjecture 5.5 for all rankings of at most 10 candidates. |
+| `checks/conjecture.c` | Exhaustive check of Conjecture 8.2 for all rankings of at most 10 candidates. |
 
 The checks of Lemma 3.1 and Theorem 3.4 test the general proofs on examples. The proofs do not depend on them.
 
