@@ -3,7 +3,7 @@
 For every ranking rho of {0,...,n-1} the linear program of Theorem 6.2 is solved numerically
 with the HiGHS solver in SciPy. From the numerical solutions we build
   * a rational number lam (the largest optimum),
-  * for every ranking rho, rational multipliers mu_0,...,mu_{n-2} >= 0 satisfying the
+  * for every ranking rho, rational multipliers mu_0,...,mu_{n-2} >= 0 (mu_1,...,mu_{n-1} in the paper) satisfying the
     certificate inequality of Lemma 4.1 with lam,
   * an integer profile with the identity as a Borda ranking and quotient lam.
 The results are written to certificates/borda_n<n>.json. Correctness does not depend on this

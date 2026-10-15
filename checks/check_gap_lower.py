@@ -1,5 +1,7 @@
 """Exact check of the construction in the proof of Theorem 3.4.
 
+Candidates and positions are numbered from 0, as in the rest of the code (see README.md).
+
 For every number n <= 8 of candidates and all i <= r < j, it builds the ranking sigma of the proof
 (positions i..j filled with r+1, i, ..., r-1, r+2, ..., j, r) and checks that K(id, sigma) = j - i,
 that sigma(r+1) = i and sigma(r) = j, and, for random scoring vectors and weights w1 >= w2 with

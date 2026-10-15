@@ -2,7 +2,7 @@
 
 Supplementary material for the paper
 
-> Y. M. Chee, *Characterising Positional Scoring Rules with Bounded Kemeny Approximation*.
+> Y. M. Chee, *Characterizing Positional Scoring Rules Through Kemeny Approximability*.
 
 Theorem and section numbers below refer to that paper.
 
@@ -13,8 +13,9 @@ Theorem and section numbers below refer to that paper.
 | `generate_certificates.py` | Solves the linear programs of Theorem 6.2 for Borda's rule with the HiGHS solver in SciPy and writes rational certificates and integer extremal profiles to `certificates/`. |
 | `verify.py` | Exact verifier for Theorem 7.1. Uses only the Python standard library. |
 | `certificates/borda_n<n>.json` | Certificates and extremal profile for `n` = 2, ..., 7 candidates. |
-| `checks/check_three_candidates.py` | Symbolic check of the multipliers in the proof of Theorem 4.2 (needs SymPy). |
-| `checks/check_lemma_average.py` | Exact randomised check of Lemma 3.1 in rational arithmetic. |
+| `checks/check_three_candidates.py` | Symbolic check of the multipliers in the proof of Theorem 4.2. Prints the residuals of Appendix A (needs SymPy). |
+| `checks/check_lemma_average.py` | Exact randomized check of Lemma 3.1 in rational arithmetic. |
+| `checks/check_scoring_table.py` | Exact check of the entries of Tables 1 and 2 (Corollary 3.6). |
 | `checks/check_gap_lower.py` | Exact check of the construction in the proof of Theorem 3.4. |
 | `checks/conjecture.c` | Exhaustive check of Conjecture 8.2 for all rankings of at most 10 candidates. |
 
@@ -22,13 +23,13 @@ The checks of Lemma 3.1 and Theorem 3.4 test the general proofs on examples. The
 
 ## Conventions
 
-A ranking of the candidates `0, ..., n-1` is stored as a *position map*: `ranking[c]` is the position of candidate `c`, and position `0` is first. Borda totals are sums of positions, so a ranking is a Borda ranking when it orders the candidates by nondecreasing Borda total.
+`check_three_candidates.py`, `check_lemma_average.py` and `check_scoring_table.py` use the notation of the paper, with candidates and positions numbered from `1`. The other programs number them from `0`. There a ranking of the candidates `0, ..., n-1` is stored as a *position map*: `ranking[c]` is the position of candidate `c`, and position `0` is first. Adding `1` to every candidate and every position converts the stored rankings to the notation of the paper, and `mu_r` in the code is `mu_{r+1}` in the paper. Borda totals are sums of positions, so a ranking is a Borda ranking when it orders the candidates by nondecreasing Borda total.
 
 Each file `certificates/borda_n<n>.json` contains
 
 * `lambda`: the value of the approximation ratio `R_n` of Borda's rule, as a fraction;
-* `witness`: an integer profile, as a list of rankings with their numbers of voters, whose Borda rankings include the identity and whose quotient of the Kemeny score of the identity by the optimum equals `lambda`;
-* `certificates`: for each of the `n!` rankings `rho`, multipliers `mu_0, ..., mu_{n-2}` as fractions satisfying the inequality of Lemma 4.1 with `lambda`.
+* `witness`: an integer profile, as a list of rankings with their numbers of voters, whose Borda rankings include the identity and for which the Kemeny score of the identity divided by the optimum equals `lambda`;
+* `certificates`: for each of the `n!` rankings `rho`, multipliers `mu_0, ..., mu_{n-2}` (the paper's `mu_1, ..., mu_{n-1}`) as fractions satisfying the inequality of Lemma 4.1 with `lambda`.
 
 ## Reproducing the results
 
@@ -39,6 +40,7 @@ python3 verify.py                     # checks n = 2, ..., 7 (about a minute)
 python3 checks/check_three_candidates.py
 python3 checks/check_lemma_average.py 20000
 python3 checks/check_gap_lower.py
+python3 checks/check_scoring_table.py
 cc -O2 -o conjecture checks/conjecture.c
 for n in 3 4 5 6 7 8 9 10; do ./conjecture $n; done
 ```
@@ -54,8 +56,8 @@ The solver is used only to find the certificates and profiles. `verify.py` check
 
 ## Expected output
 
-`verify.py` reports `R_n` = 1, 3/2, 5/3, 75/41, 2, 64/31 for `n` = 2, ..., 7, with 5912 certificates and 25,935,016 inequalities in total. `conjecture` reports the largest value `(n-3)/(n-1)` for `4 <= n <= 10`.
+`verify.py` reports `R_n` = 1, 3/2, 5/3, 75/41, 2, 64/31 for `n` = 2, ..., 7, with 5912 certificates and 25,935,016 inequalities in total. `conjecture` reports the largest value `(n-3)/(n-1)` for `4 <= n <= 10`. `check_scoring_table.py` ends with `all entries of Table 2 confirmed`.
 
-## Licence
+## License
 
 MIT. See `LICENSE`.
